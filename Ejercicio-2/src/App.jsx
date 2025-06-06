@@ -2,34 +2,44 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-import Title from "./components/Title";
-import Subtitle from "./components/Subtitle";
-import Foto from "./components/Foto";
+import Movie from "./components/Movie";
+
 function App() {
-  let peliculas = {
-    pelicula1: {
+  const peliculas = [
+    {
       title: "Spiderman",
       año: 1990,
-      imagen: "Ejercicio-2srcassetsspiderman.jpg",
+      imagen: "src/assets/spiderman.jpg",
+      puntaje: { rating: "Buena", color: "bg-success" },
     },
-    pelicula2: {
+    {
       title: "Batman",
       año: 1995,
-      imagen: "Ejercicio-2srcassets\batman&robin.png",
+      imagen: "src/assets/batman&robin.png",
+      puntaje: { rating: "Mala", color: "bg-danger" },
     },
-    pelicula3: {
+    {
       title: "Batman&Robin",
       año: 2000,
-      imagen: "Ejercicio-2srcassetsBatman&robin2.jpg",
+      imagen: "src/assets/Batman&robin2.jpg",
+      puntaje: { rating: "Intermedio", color: "bg-warning" },
     },
-  };
+  ];
 
-  for (let i = 0; i < peliculas.length; i++) {
-    const pelicula = peliculas[i];
-  }
-  return <>
-  <Titulo titulo= />
-  </>;
+  return (
+    <>
+      {peliculas.map((pelicula, index) => (
+        <Movie
+          key={index}
+          title={pelicula.title}
+          puntaje={pelicula.puntaje.color}
+          rating={pelicula.puntaje.rating}
+          año={pelicula.año}
+          imagen={pelicula.imagen}
+        />
+      ))}
+    </>
+  );
 }
 
 export default App;
